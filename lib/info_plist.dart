@@ -18,7 +18,7 @@ class InfoPlist {
   /// This method will only ever make a read once and cache the resulting data.
   /// Subsequent calls will simply return the same [Map] instance.
   ///
-  /// NOTE: The [Map] is actually an `[UnmodifiableMapView<String, Object?>]`.
+  /// NOTE: The [Map] is actually an [UnmodifiableMapView<String, Object?>].
   static Future<ImmutableMap> getInfoPlistContents() {
     if (_completer == null) {
       final completer = Completer<void>();
