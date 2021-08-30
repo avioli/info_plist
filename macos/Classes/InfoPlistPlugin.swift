@@ -12,9 +12,7 @@ public class InfoPlistPlugin: NSObject, FlutterPlugin {
     switch call.method {
     case "getInfoPlistContents":
       guard let infoPlist = Bundle.main.url(forResource: "Info", withExtension: "plist") else {
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                message: "Info.plist not found",
-                                details: nil))
+        result(FlutterError.init(code: "NATIVE_ERR", message: "Info.plist not found", details: nil))
         return
       }
       let dict = NSDictionary.init(contentsOf: infoPlist)
