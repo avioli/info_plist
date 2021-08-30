@@ -28,14 +28,14 @@ class _MyAppState extends State<MyApp> {
 
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      if (Platform.isIOS) {
+      if (Platform.isIOS || Platform.isMacOS) {
         final infoPlist = await InfoPlist.getInfoPlistContents();
         message = JsonEncoder.withIndent('  ').convert(infoPlist);
       } else {
         message = 'Unsupported platform: ${Platform.operatingSystem}';
       }
-    } on PlatformException {
-      message = 'Failed to get Info.plist contents.';
+    } on PlatformException catch (err) {
+      message = 'Failed to get Info.plist contents: ${err.message}.';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
