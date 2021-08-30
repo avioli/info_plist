@@ -1,5 +1,5 @@
 name: info_plist
-description: A new flutter plugin project.
+description: Get the data from iOS' and macOS' Info.plist
 version: 0.0.1
 homepage:
 
