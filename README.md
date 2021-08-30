@@ -1,15 +1,24 @@
-# info_plist
+# A Flutter plugin to read the data from iOS or macOS's bundled Info.plist
 
-A new flutter plugin project.
+Sometimes hard-conding the bundle name, identifier, the version or the build
+can be forgotten, so this tiny plugin is meant to help in that department.
 
-## Getting Started
+## Example usage
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await InfoPlist.getInfoPlistContents();
+  if (Platform.isIOS || Platform.isMacOS) {
+    print(InfoPlist.bundleIdentifier); // "com.my.fancy.app"
+    print(InfoPlist.bundleName); // "My fancy app"
+    print(InfoPlist.version); // "1.0.0"
+    print(InfoPlist.build); // "123"
+  } else {
+    print(InfoPlist.bundleIdentifier); // null
+    print(InfoPlist.bundleName); // null
+    print(InfoPlist.version); // null
+    print(InfoPlist.build); // null
+  }
+}
+```
