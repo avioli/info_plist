@@ -5,23 +5,24 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:info_plist_example/main.dart';
 
 void main() {
-  testWidgets('Verify Platform version', (WidgetTester tester) async {
+  testWidgets('Verify message is shown', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
 
-    // Verify that platform version is retrieved.
-    expect(
-      find.byWidgetPredicate(
-        (Widget widget) => widget is Text &&
-                           widget.data!.startsWith('Running on:'),
-      ),
-      findsOneWidget,
-    );
+    if (Platform.isIOS) {
+      expect(find.text('CFBundleName'), findsOneWidget);
+    } else {
+      expect(
+        find.text('Unsupported platform: ${Platform.operatingSystem}'),
+        findsOneWidget,
+      );
+    }
   });
 }
