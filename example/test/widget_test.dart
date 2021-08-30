@@ -1,18 +1,25 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+///
+///
+/// These tests must be run via:
+///  - [iOS/Android] connect a device, then `flutter run test/widget_test.dart`
+///  - [iOS/Android] start a simulator/emulator, then `flutter run test/widget_test.dart`
+///  - [macOS] when host is a Mac - `flutter run -d macos test/widget_test.dart`
+///
+///
 
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:info_plist_example/main.dart';
+// import 'package:info_plist/info_plist.dart';
 
 void main() {
+  // testWidgets('Ensure tests run on device/simulator/emulator',
+  //     (WidgetTester tester) async {
+  //   await InfoPlist.getInfoPlistContents();
+  // }, timeout: Timeout(Duration(milliseconds: 300)));
+
   testWidgets('Verify message is shown', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
 
     expect(find.text('Unknown'), findsOneWidget);
