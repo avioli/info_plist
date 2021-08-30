@@ -11,12 +11,11 @@ public class InfoPlistPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case "getInfoPlistContents":
-      guard let infoPlist = Bundle.main.url(forResource: "Info", withExtension: "plist") else {
+      guard let infoPlist = Bundle.main.infoDictionary else {
         result(FlutterError.init(code: "NATIVE_ERR", message: "Info.plist not found", details: nil))
         return
       }
-      let dict = NSDictionary.init(contentsOf: infoPlist)
-      result(dict)
+      result(infoPlist)
     default:
       result(FlutterMethodNotImplemented)
     }
