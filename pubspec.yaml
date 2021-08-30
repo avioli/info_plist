@@ -31,6 +31,8 @@ flutter:
         pluginClass: InfoPlistPlugin
       ios:
         pluginClass: InfoPlistPlugin
+      macos:
+        pluginClass: InfoPlistPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
