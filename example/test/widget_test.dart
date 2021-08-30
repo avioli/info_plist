@@ -8,7 +8,6 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:info_plist_example/main.dart';
 
 void main() {
@@ -16,8 +15,12 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
 
-    if (Platform.isIOS) {
-      expect(find.text('CFBundleName'), findsOneWidget);
+    expect(find.text('Unknown'), findsOneWidget);
+
+    await tester.pump(Duration(milliseconds: 300));
+
+    if (Platform.isIOS || Platform.isMacOS) {
+      expect(find.textContaining('CFBundleName'), findsOneWidget);
     } else {
       expect(
         find.text('Unsupported platform: ${Platform.operatingSystem}'),
