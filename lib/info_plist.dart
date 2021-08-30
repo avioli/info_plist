@@ -6,8 +6,7 @@ import 'package:meta/meta.dart';
 
 typedef ImmutableMap = UnmodifiableMapView<String, Object?>;
 
-/// A namespace to get iOS and macOS bundle information from the `info.plist`
-/// file
+/// A namespace to get iOS and macOS bundle info from the `info.plist` file
 ///
 /// To read the data you need to call [getInfoPlistContents] at least once,
 /// then await it to finish.
