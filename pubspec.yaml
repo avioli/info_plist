@@ -1,6 +1,6 @@
 name: info_plist
 description: Get the data from iOS' and macOS' Info.plist
-version: 0.0.1
+version: 0.1.0
 homepage:
 
 environment:
